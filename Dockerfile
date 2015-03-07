@@ -15,9 +15,11 @@ RUN    apt-get update \
 
 RUN pip install cqlsh
 
+RUN sed -i -e "s/\/var\/lib\/cassandra\//\/mnt\/cassandra\//" /etc/cassandra/cassandra.yaml
+
 VOLUME /var/lib/cassandra
 
 EXPOSE 7199 7000 7001 9160 9042
 
-CMD ["cassandra"]
+CMD ["cassandra -f"]
 
