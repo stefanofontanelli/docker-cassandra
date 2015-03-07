@@ -2,6 +2,8 @@ FROM java:8-jre
 
 MAINTAINER Stefano Fontanelli <s.fontanelli@gmail.com>
 
+VOLUME ["/var/lib/cassandra"]
+
 RUN curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
 ENV CASSANDRA_VERSION 2.1.3
@@ -14,10 +16,6 @@ RUN    apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pip install cqlsh
-
-RUN sed -i -e "s/\/var\/lib\/cassandra\//\/mnt\/cassandra\//" /etc/cassandra/cassandra.yaml
-
-VOLUME /mnt/cassandra
 
 EXPOSE 7199 7000 7001 9160 9042
 
