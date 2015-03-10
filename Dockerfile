@@ -17,7 +17,8 @@ RUN    apt-get update \
 
 RUN pip install cqlsh
 
+COPY cassandra.sh /usr/local/bin/
+
 EXPOSE 7199 7000 7001 9160 9042
 
-CMD ["cassandra -f"]
-
+CMD ["/usr/local/bin/cassandra.sh"]
