@@ -1,4 +1,7 @@
-docker build --no-cache=true -t stefanofontanelli/cassandra .
-docker push stefanofontanelli/cassandra:latest
-docker tag -f stefanofontanelli/cassandra:latest stefanofontanelli/cassandra:2.1.3
-docker push stefanofontanelli/cassandra:2.1.3
+#!/bin/bash
+
+VERSION='2.1.7'
+docker build --no-cache=true -t gild/cassandra .
+docker push gild/cassandra:latest
+docker tag -f gild/cassandra:latest gild/cassandra:$VERSION
+docker push gild/cassandra:$VERSION
