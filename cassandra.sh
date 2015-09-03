@@ -4,13 +4,13 @@ CONF=/etc/cassandra/cassandra.yaml
 
 echo "Cassandra will bind to $ADDR"
 
-sed -i -e "s/listen_address: localhost/listen_address: $ADDR/g" $CONF
-grep "listen_address" $CONF
+sed -i -e "s/^listen_address: .*$/listen_address: $ADDR/g" $CONF
+grep "^listen_address" $CONF
 
-sed -i -e "s/rpc_address: localhost/rpc_address: $ADDR/g" $CONF
-grep "rpc_address" $CONF
+sed -i -e "s/^rpc_address: .*$/rpc_address: $ADDR/g" $CONF
+grep "^rpc_address" $CONF
 
-sed -i -e "s/- seeds: \"127.0.0.1\"/- seeds: \"$ADDR\"/g" $CONF
-grep "seeds:" $CONF
+sed -i -e "s/- seeds: \".*\"/- seeds: \"$ADDR\"/g" $CONF
+grep "\- seeds:" $CONF
 
 cassandra -f
