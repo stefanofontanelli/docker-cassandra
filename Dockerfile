@@ -6,7 +6,7 @@ VOLUME ["/var/lib/cassandra"]
 
 RUN curl -L http://debian.datastax.com/debian/repo_key | apt-key add -
 
-ENV CASSANDRA_VERSION 2.1.7
+ENV CASSANDRA_VERSION 2.1.12
 
 RUN echo "deb http://debian.datastax.com/community stable main" > /etc/apt/sources.list.d/cassandra.sources.list
 
